@@ -1,11 +1,19 @@
+import ssl
+import certifi
+import geopy.geocoders
+from geopy.geocoders import Nominatim
+
+ctx = ssl.create_default_context(cafile=certifi.where())
+geopy.geocoders.options.default_ssl_context = ctx
+
 import streamlit as st
 import requests
 from datetime import datetime
 import pytz
-import matplotlib as plt
+import matplotlib.pyplot as plt
 import pandas as pd
 
-st.set_page_config(page_title="🌍 how is the weather out der", page_icon="🌦", layout="wide")
+st.set_page_config(page_title="🌍 Weather Dashboard", page_icon="🌦", layout="wide")
 
 # ---------- Custom Styling ----------
 st.markdown("""
